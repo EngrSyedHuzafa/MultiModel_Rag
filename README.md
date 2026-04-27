@@ -4,7 +4,7 @@
 
 ---
 ## 🌟 Features,Nbzc
-- **Multimodal Ingestion**
+- **Multimodal Ingestion**NMDASF
   - Load PDFs, text, images, audio, and video
   - Text cleaning, OCR, speech-to-text, and frame extraction
   - Captioning for images and video frames
