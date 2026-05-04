@@ -1,6 +1,6 @@
 # Multimodal RAG Project
 
-**Multimodal RAG (Retrieval-Augmented Generation)** is a professional framework for building a retrieval-based AI system that can handle **text, images, audio, and video**. This repository is structured to support multimodal ingestion, embedding, retrieval, and generation using LLMs, while also supporting agentic features.jkgvv
+**Multimodal RAG (Retrieval-Augmented Generation)** is a professional framework for building a retrieval-based AI system that can handle **text, images, audio, and video**. This repository is structured to support multimodal ingestion, embedding, retrieval, and generation using LLMs, while also supporting agentic features.
 ---
 ## 🌟 Features,jvg
 - **Multimodal Ingestion**
