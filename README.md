@@ -2,7 +2,14 @@
 
 **Multimodal RAG (Retrieval-Augmented Generation)** is a professional framework for building a retrieval-based AI system that can handle **text, images, audio, and video**. This repository is structured to support multimodal ingestion, embedding, retrieval, and generation using LLMs, while also supporting agentic features.
 ---
-## 🌟 Features sdfsdfsdf
+## 🌟 Features 
+sd
+sdf
+
+g
+h
+h
+h
 - **Multimodal Ingestion**
   - Load PDFs, text, images, audio, and video
   - Text cleaning, OCR, speech-to-text, and frame extraction
