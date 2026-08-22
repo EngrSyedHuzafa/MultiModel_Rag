@@ -1,25 +1,32 @@
+"""
+Text chunking.
+"""
+
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-# to test the text chunking functionality, we will import the store_chunks function from the vector_store module and call it within the chunk_text function. This will allow us to store the generated chunks in the vector store and verify that they are being stored correctly.
-# from retrieval.vector_store import store_chunks
-# we will also import the search_chunks function from the search module to test the search functionality after chunking and storing the chunks.
-# from retrieval.search import search_chunks
-def chunk_text(text):
+from app.config import settings
+from app.logger import get_logger
 
-    splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500,
-        chunk_overlap=50
-    )
+logger = get_logger(__name__)
 
-    chunks = splitter.split_text(text)
-    #count = store_chunks(chunks, document_id="doc1")
-    #print("Stored chunks:", count)
+
+def chunk_text(text: str, chunk_size: int = None, chunk_overlap: int = None) -> list[str]:
+    if not text or not text.strip():
+        logger.warning("chunk_text called with empty/whitespace-only text. Returning no chunks.")
+        return []
+
+    chunk_size = chunk_size or settings.CHUNK_SIZE
+    chunk_overlap = chunk_overlap or settings.CHUNK_OVERLAP
+
+    if chunk_overlap >= chunk_size:
+        logger.error(f"chunk_overlap ({chunk_overlap}) must be smaller than chunk_size ({chunk_size})")
+        raise ValueError("chunk_overlap must be smaller than chunk_size")
+
+    try:
+        splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
+        chunks = splitter.split_text(text)
+    except Exception as e:
+        logger.error(f"Text splitting failed: {e}")
+        raise
+
+    logger.info(f"Split text into {len(chunks)} chunks (size={chunk_size}, overlap={chunk_overlap})")
     return chunks
-
-
-#The vbelow code is for testing the search functionality after chunking and storing the chunks. We will use a sample query to search for relevant chunks and print the results.
-# query = "what is business model?"
-
-# results = search_chunks(query)
-
-# for i, r in enumerate(results):
-#     print(f"\nChunk {i}:\n{r}\n")
